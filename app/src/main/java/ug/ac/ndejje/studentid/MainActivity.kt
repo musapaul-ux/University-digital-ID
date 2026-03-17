@@ -132,14 +132,14 @@ fun UniversityDigitalIDCard() {
                         fontWeight = FontWeight.Bold
                     )
 
-                    Spacer(modifier = Modifier.height(0.dp))
+                    Spacer(modifier = Modifier.height(1.dp))
 
                     // PROGRAMME
                     Text(
                         text = "Programme: BSc Computer Science",
                         fontSize = 13.sp
                     )
-                    Spacer(modifier = Modifier.height(0.dp))
+                    Spacer(modifier = Modifier.height(1.dp))
                     // REGISTRATION NUMBER
                     Row {
                         Text(
