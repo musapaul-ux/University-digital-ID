@@ -3,7 +3,6 @@ package ug.ac.ndejje.studentid
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -30,8 +29,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -40,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ug.ac.ndejje.studentid.ui.screens.IDCardScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +61,7 @@ fun UniversityDigitalIDCard() {
     ElevatedCard(
         modifier = Modifier
             .width(360.dp)
-            .height(230.dp),
+            .height(260.dp),
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.elevatedCardElevation(8.dp)
     ) {
@@ -185,10 +183,17 @@ fun UniversityDigitalIDCard() {
                             )
                         }
                     }
-                }
+                    IDCardScreen()
+                    Spacer(modifier = Modifier.height(2.dp))
 
-                // FOOTER (BARCODE + STRIP)
-                IDCardFooter()
+                }
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(6.dp)
+                        .background(Color(0xFF8B1E1E))
+                )
+
             }
 
             // LOGOS ROW (extends slightly below header)
@@ -237,46 +242,7 @@ fun UniversityDigitalIDCard() {
     }
 }
 
-@Composable
-fun IDCardFooter() {
 
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        Canvas(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(20.dp)
-                .padding(horizontal = 12.dp)
-        ) {
-
-            val barWidth = size.width / 90
-
-            for (i in 10..80) {
-
-                if (i % 2 == 0) {
-
-                    drawRect(
-                        color = Color.Black,
-                        topLeft = Offset(i * barWidth, 0f),
-                        size = Size(barWidth, size.height)
-                    )
-                }
-            }
-        }
-
-        Spacer(modifier = Modifier.height(4.dp))
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(6.dp)
-                .background(Color(0xFF8B1E1E))
-        )
-    }
-}
 
 @Preview(showBackground = true)
 @Composable
